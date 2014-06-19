@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">uikun</string>
+    <string name="orientation_prompt">Screen Orientation</string>
+    <string-array name="orientation_array">
+        <item>Automatic</item>
+        <item>Portrait</item>
+        <item>Landscape</item>
+    </string-array>
+        <string name="host_string">Target IP Address</string>
+        <string name="udp_string">Target UDP Port</string>
+        <string name="author_string">Nicholas Katzakis based on Tobias Schwirten &amp; Martin Kaltenbrunner\'s TUIOdroid</string>
+        <string name="help_string">This application sends multitouch events via TUIO/UDP. You can change the target IP address and port number as well as the default screen orientation in the settings dialog. The TUIO verbosity can be increased for the use on unreliable networks. You will find further information about the TUIO protocol and framework at TUIO.org\n\nThe included Java TUIO implementation is based on the JavaOSC library by Chandrasekhar Ramakrishnan.</string>
+		<string name="url_string">http://www.tuio.org/</string>
+
+</resources>
