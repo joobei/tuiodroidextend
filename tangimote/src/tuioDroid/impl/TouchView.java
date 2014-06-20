@@ -19,11 +19,15 @@
 
 package tuioDroid.impl;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Enumeration;
+
 
 
 import com.illposed.osc.OSCBundle;
@@ -34,6 +38,7 @@ import tuioDroid.osc.OSCInterface;
 import android.content.Context;
 import android.graphics.*;
 import android.graphics.Paint.*;
+import android.os.AsyncTask;
 import android.view.*;
 
 /**
@@ -42,6 +47,17 @@ import android.view.*;
  * @author Martin Kaltenbrunner
  */
 public class TouchView extends SurfaceView implements SurfaceHolder.Callback {
+	
+	private class Sender extends AsyncTask<OSCBundle,Void,Void> {
+
+		@Override
+		protected Void doInBackground(OSCBundle... bundle) {
+			
+			oscInterface.sendOSCBundle(bundle[0]);
+		
+			return null;
+		}
+	}
 	
 	private static final int MAX_TOUCHPOINTS = 10;
 	private static final int FRAME_RATE = 40;
@@ -226,6 +242,8 @@ public class TouchView extends SurfaceView implements SurfaceHolder.Callback {
 		c.drawText(clientString, 5, height-5,textPaint );
 	}
 	
+	
+	
 	/**
 	 * Sends the TUIO Data
 	 * @param blobList
@@ -294,7 +312,7 @@ public class TouchView extends SurfaceView implements SurfaceHolder.Callback {
 		/*
 		 * Sending bundle
 		 */
-		oscInterface.sendOSCBundle(oscBundle);
+		new Sender().execute(oscBundle);
 	}
 
 	

@@ -22,6 +22,7 @@ package tuioDroid.impl;
 import android.app.*;
 import android.content.*;
 import android.content.pm.ActivityInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.Toast;
@@ -33,12 +34,36 @@ import java.net.*;
 import keimote.Data.MsgType;
 import keimote.Data.PhoneEvent;
 
+
+
 /**
  * Main Activity
  * @author Tobias Schwirten
  * @author Martin Kaltenbrunner
  */
 public class MainActivity extends Activity implements SensorEventListener {
+	
+	private class Transmitter extends AsyncTask<byte[],Void,Void> {
+
+		@Override
+		protected Void doInBackground(byte[]... messages) {
+			
+			try {
+				sk.send(new DatagramPacket(messages[0], messages[0].length, dest, 9999));
+
+			} catch (UnknownHostException e) {
+				sensorUnreg();
+				popup("InetAddress Error: " + e.toString());
+			} catch (SocketException e) {
+				sensorUnreg();
+				popup("Socket Error: " + e.toString());
+			} catch (IOException e) {
+				sensorUnreg();
+				popup("IO Error: " + e.toString());
+			}			
+			return null;
+		}
+	}
 
 	private SensorManager sm;
 	private Context context; 
@@ -242,7 +267,6 @@ public class MainActivity extends Activity implements SensorEventListener {
 				try {
 					this.dest = InetAddress.getByName(oscIP);
 				} catch (UnknownHostException e) {
-					// TODO Auto-generated catch block
 					Toast.makeText(this, "Invalid host name or IP address!", Toast.LENGTH_LONG).show();
 				}
 
@@ -298,8 +322,6 @@ public class MainActivity extends Activity implements SensorEventListener {
 		}	
 	}
 
-
-
 	// display a toast pop-up for 2 seconds
 	private void popup(String msg) {
 		notifier.setText(msg);
@@ -308,18 +330,14 @@ public class MainActivity extends Activity implements SensorEventListener {
 
 	// functions to register and unregister on sensor event listener
 	private void sensorReg() {
-		sm.registerListener(this, sm.getSensorList(Sensor.TYPE_MAGNETIC_FIELD)
-				.get(0), SensorManager.SENSOR_DELAY_FASTEST);
-		sm.registerListener(this, sm.getSensorList(Sensor.TYPE_ACCELEROMETER)
+		sm.registerListener(this, sm.getSensorList(Sensor.TYPE_ROTATION_VECTOR)
 				.get(0), SensorManager.SENSOR_DELAY_FASTEST);
 		working = true;
 	}
 
 	private void sensorUnreg() {
 		sm.unregisterListener(this, sm
-				.getSensorList(Sensor.TYPE_MAGNETIC_FIELD).get(0));
-		sm.unregisterListener(this, sm.getSensorList(Sensor.TYPE_ACCELEROMETER)
-				.get(0));
+				.getSensorList(Sensor.TYPE_ROTATION_VECTOR).get(0));
 		working = false;
 	}
 
@@ -331,18 +349,12 @@ public class MainActivity extends Activity implements SensorEventListener {
 	// build a message and put it on the network with tx()
 	public void onSensorChanged(SensorEvent s_ev) {
 		if (working) {
-			PhoneEvent.Builder toTransmit = PhoneEvent.newBuilder().setX(s_ev.values[0]).setY(s_ev.values[1]).setZ(s_ev.values[2]);
-
-			if (s_ev.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) { 
-				toTransmit.setType(keimote.Data.MsgType.MAG);	
-			}
-			if (s_ev.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-				toTransmit.setType(keimote.Data.MsgType.ACCEL);
-			}
-			if (s_ev.sensor.getType() == Sensor.TYPE_GYROSCOPE) {
-				toTransmit.setType(keimote.Data.MsgType.GYRO); 	}
-
-			tx(toTransmit.build().toByteArray());
+			PhoneEvent.Builder toTransmit = PhoneEvent.newBuilder()
+					.setX(s_ev.values[0])
+					.setY(s_ev.values[1])
+					.setZ(s_ev.values[2]);
+			toTransmit.setType(keimote.Data.MsgType.ROTATION);	
+			new Transmitter().execute(toTransmit.build().toByteArray());
 		}
 	}
 
@@ -369,26 +381,8 @@ public class MainActivity extends Activity implements SensorEventListener {
 	public void calibrate() {
 		PhoneEvent.Builder toTransmit = PhoneEvent.newBuilder()
 				.setType(keimote.Data.MsgType.BUTTON).setButtontype(1);
-		tx(toTransmit.build().toByteArray());
+		new Transmitter().execute(toTransmit.build().toByteArray());
 		popup("Orientation Calibrated");
-	}
-
-	// transmit a string via UDP to the preset host
-	private void tx(byte[] bs) {
-		try {
-			sk.send(new DatagramPacket(bs, bs.length, dest, 9999));
-
-		} catch (UnknownHostException e) {
-			sensorUnreg();
-			popup("InetAddress Error: " + e.toString());
-		} catch (SocketException e) {
-			sensorUnreg();
-			popup("Socket Error: " + e.toString());
-		} catch (IOException e) {
-			sensorUnreg();
-			popup("IO Error: " + e.toString());
-		}
-
 	}
 
 	// handle key presses
@@ -399,7 +393,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 			case KeyEvent.KEYCODE_VOLUME_UP:
 				if (!up) { //keep track if the button has been pressed to stop repeating
 				toTransmit = PhoneEvent.newBuilder().setType(MsgType.BUTTON).setButtontype(2).setState(true);
-				tx(toTransmit.build().toByteArray());
+				new Transmitter().execute(toTransmit.build().toByteArray());
 				popup("UP pressed");
 				up = true; 
 				}
@@ -407,7 +401,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 			case KeyEvent.KEYCODE_VOLUME_DOWN:
 				if (!down) {
 				toTransmit = PhoneEvent.newBuilder().setType(MsgType.BUTTON).setButtontype(3).setState(true);
-				tx(toTransmit.build().toByteArray());
+				new Transmitter().execute(toTransmit.build().toByteArray());
 				popup("DOWN pressed");
 				down = true;}
 				return true;
@@ -425,14 +419,14 @@ public class MainActivity extends Activity implements SensorEventListener {
 			case KeyEvent.KEYCODE_VOLUME_UP:
 				if(up) {
 				toTransmit = PhoneEvent.newBuilder().setType(MsgType.BUTTON).setButtontype(2).setState(false);
-				tx(toTransmit.build().toByteArray());
+				new Transmitter().execute(toTransmit.build().toByteArray());
 				popup("UP Released");
 				up = false;}
 				return true;
 			case KeyEvent.KEYCODE_VOLUME_DOWN:
 				if (down) {
 				toTransmit = PhoneEvent.newBuilder().setType(MsgType.BUTTON).setButtontype(3).setState(false);
-				tx(toTransmit.build().toByteArray());
+				new Transmitter().execute(toTransmit.build().toByteArray());
 				popup("DOWN Released");
 				down = false;}
 				return true;
@@ -440,5 +434,4 @@ public class MainActivity extends Activity implements SensorEventListener {
 				return false;
 			}
 	}
-
 }

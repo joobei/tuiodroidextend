@@ -8,44 +8,41 @@ public final class Data {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
+  /**
+   * Protobuf enum {@code keimote.MsgType}
+   */
   public enum MsgType
       implements com.google.protobuf.Internal.EnumLite {
-    MAG(0, 0),
-    ACCEL(1, 1),
-    GYRO(2, 2),
-    TOUCH(3, 3),
-    BUTTON(4, 4),
-    TOUCH2(5, 5),
-    TOUCH3(6, 6),
-    TOUCH4(7, 7),
+    /**
+     * <code>ROTATION = 0;</code>
+     */
+    ROTATION(0, 0),
+    /**
+     * <code>BUTTON = 4;</code>
+     */
+    BUTTON(1, 4),
     ;
-    
-    public static final int MAG_VALUE = 0;
-    public static final int ACCEL_VALUE = 1;
-    public static final int GYRO_VALUE = 2;
-    public static final int TOUCH_VALUE = 3;
+
+    /**
+     * <code>ROTATION = 0;</code>
+     */
+    public static final int ROTATION_VALUE = 0;
+    /**
+     * <code>BUTTON = 4;</code>
+     */
     public static final int BUTTON_VALUE = 4;
-    public static final int TOUCH2_VALUE = 5;
-    public static final int TOUCH3_VALUE = 6;
-    public static final int TOUCH4_VALUE = 7;
-    
-    
+
+
     public final int getNumber() { return value; }
-    
+
     public static MsgType valueOf(int value) {
       switch (value) {
-        case 0: return MAG;
-        case 1: return ACCEL;
-        case 2: return GYRO;
-        case 3: return TOUCH;
+        case 0: return ROTATION;
         case 4: return BUTTON;
-        case 5: return TOUCH2;
-        case 6: return TOUCH3;
-        case 7: return TOUCH4;
         default: return null;
       }
     }
-    
+
     public static com.google.protobuf.Internal.EnumLiteMap<MsgType>
         internalGetValueMap() {
       return internalValueMap;
@@ -57,478 +54,131 @@ public final class Data {
               return MsgType.valueOf(number);
             }
           };
-    
+
     private final int value;
-    
+
     private MsgType(int index, int value) {
       this.value = value;
     }
-    
+
     // @@protoc_insertion_point(enum_scope:keimote.MsgType)
   }
-  
+
   public interface PhoneEventOrBuilder
       extends com.google.protobuf.MessageLiteOrBuilder {
-    
+
     // required .keimote.MsgType type = 1;
+    /**
+     * <code>required .keimote.MsgType type = 1;</code>
+     */
     boolean hasType();
+    /**
+     * <code>required .keimote.MsgType type = 1;</code>
+     */
     keimote.Data.MsgType getType();
-    
+
     // optional float x = 2;
+    /**
+     * <code>optional float x = 2;</code>
+     */
     boolean hasX();
+    /**
+     * <code>optional float x = 2;</code>
+     */
     float getX();
-    
+
     // optional float y = 3;
+    /**
+     * <code>optional float y = 3;</code>
+     */
     boolean hasY();
+    /**
+     * <code>optional float y = 3;</code>
+     */
     float getY();
-    
+
     // optional float z = 4;
+    /**
+     * <code>optional float z = 4;</code>
+     */
     boolean hasZ();
+    /**
+     * <code>optional float z = 4;</code>
+     */
     float getZ();
-    
-    // optional int32 xx = 5;
-    boolean hasXx();
-    int getXx();
-    
-    // optional int32 yy = 6;
-    boolean hasYy();
-    int getYy();
-    
+
+    // optional float w = 5;
+    /**
+     * <code>optional float w = 5;</code>
+     */
+    boolean hasW();
+    /**
+     * <code>optional float w = 5;</code>
+     */
+    float getW();
+
     // optional int32 buttontype = 7;
+    /**
+     * <code>optional int32 buttontype = 7;</code>
+     */
     boolean hasButtontype();
+    /**
+     * <code>optional int32 buttontype = 7;</code>
+     */
     int getButtontype();
-    
+
     // optional bool state = 8;
+    /**
+     * <code>optional bool state = 8;</code>
+     */
     boolean hasState();
+    /**
+     * <code>optional bool state = 8;</code>
+     */
     boolean getState();
   }
+  /**
+   * Protobuf type {@code keimote.PhoneEvent}
+   */
   public static final class PhoneEvent extends
       com.google.protobuf.GeneratedMessageLite
       implements PhoneEventOrBuilder {
     // Use PhoneEvent.newBuilder() to construct.
-    private PhoneEvent(Builder builder) {
+	  @SuppressWarnings("rawtypes") 
+    private PhoneEvent(com.google.protobuf.GeneratedMessageLite.Builder builder) {
       super(builder);
+
     }
     private PhoneEvent(boolean noInit) {}
-    
+
     private static final PhoneEvent defaultInstance;
     public static PhoneEvent getDefaultInstance() {
       return defaultInstance;
     }
-    
+
     public PhoneEvent getDefaultInstanceForType() {
       return defaultInstance;
     }
-    
-    private int bitField0_;
-    // required .keimote.MsgType type = 1;
-    public static final int TYPE_FIELD_NUMBER = 1;
-    private keimote.Data.MsgType type_;
-    public boolean hasType() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public keimote.Data.MsgType getType() {
-      return type_;
-    }
-    
-    // optional float x = 2;
-    public static final int X_FIELD_NUMBER = 2;
-    private float x_;
-    public boolean hasX() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public float getX() {
-      return x_;
-    }
-    
-    // optional float y = 3;
-    public static final int Y_FIELD_NUMBER = 3;
-    private float y_;
-    public boolean hasY() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public float getY() {
-      return y_;
-    }
-    
-    // optional float z = 4;
-    public static final int Z_FIELD_NUMBER = 4;
-    private float z_;
-    public boolean hasZ() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    public float getZ() {
-      return z_;
-    }
-    
-    // optional int32 xx = 5;
-    public static final int XX_FIELD_NUMBER = 5;
-    private int xx_;
-    public boolean hasXx() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    public int getXx() {
-      return xx_;
-    }
-    
-    // optional int32 yy = 6;
-    public static final int YY_FIELD_NUMBER = 6;
-    private int yy_;
-    public boolean hasYy() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    public int getYy() {
-      return yy_;
-    }
-    
-    // optional int32 buttontype = 7;
-    public static final int BUTTONTYPE_FIELD_NUMBER = 7;
-    private int buttontype_;
-    public boolean hasButtontype() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    public int getButtontype() {
-      return buttontype_;
-    }
-    
-    // optional bool state = 8;
-    public static final int STATE_FIELD_NUMBER = 8;
-    private boolean state_;
-    public boolean hasState() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    public boolean getState() {
-      return state_;
-    }
-    
-    private void initFields() {
-      type_ = keimote.Data.MsgType.MAG;
-      x_ = 0F;
-      y_ = 0F;
-      z_ = 0F;
-      xx_ = 0;
-      yy_ = 0;
-      buttontype_ = 0;
-      state_ = false;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasType()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(1, type_.getNumber());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeFloat(2, x_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeFloat(3, y_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeFloat(4, z_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, xx_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(6, yy_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(7, buttontype_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeBool(8, state_);
-      }
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, type_.getNumber());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(2, x_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(3, y_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(4, z_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, xx_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, yy_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, buttontype_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(8, state_);
-      }
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-    
-    public static keimote.Data.PhoneEvent parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static keimote.Data.PhoneEvent parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static keimote.Data.PhoneEvent parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static keimote.Data.PhoneEvent parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static keimote.Data.PhoneEvent parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static keimote.Data.PhoneEvent parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static keimote.Data.PhoneEvent parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static keimote.Data.PhoneEvent parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static keimote.Data.PhoneEvent parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static keimote.Data.PhoneEvent parseFrom(
+
+    private PhoneEvent(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(keimote.Data.PhoneEvent prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageLite.Builder<
-          keimote.Data.PhoneEvent, Builder>
-        implements keimote.Data.PhoneEventOrBuilder {
-      // Construct using keimote.Data.PhoneEvent.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private void maybeForceBuilderInitialization() {
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        type_ = keimote.Data.MsgType.MAG;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        x_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        y_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        z_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        xx_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        yy_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        buttontype_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        state_ = false;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public keimote.Data.PhoneEvent getDefaultInstanceForType() {
-        return keimote.Data.PhoneEvent.getDefaultInstance();
-      }
-      
-      public keimote.Data.PhoneEvent build() {
-        keimote.Data.PhoneEvent result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private keimote.Data.PhoneEvent buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        keimote.Data.PhoneEvent result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public keimote.Data.PhoneEvent buildPartial() {
-        keimote.Data.PhoneEvent result = new keimote.Data.PhoneEvent(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.type_ = type_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.x_ = x_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.y_ = y_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.z_ = z_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.xx_ = xx_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.yy_ = yy_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.buttontype_ = buttontype_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.state_ = state_;
-        result.bitField0_ = to_bitField0_;
-        return result;
-      }
-      
-      public Builder mergeFrom(keimote.Data.PhoneEvent other) {
-        if (other == keimote.Data.PhoneEvent.getDefaultInstance()) return this;
-        if (other.hasType()) {
-          setType(other.getType());
-        }
-        if (other.hasX()) {
-          setX(other.getX());
-        }
-        if (other.hasY()) {
-          setY(other.getY());
-        }
-        if (other.hasZ()) {
-          setZ(other.getZ());
-        }
-        if (other.hasXx()) {
-          setXx(other.getXx());
-        }
-        if (other.hasYy()) {
-          setYy(other.getYy());
-        }
-        if (other.hasButtontype()) {
-          setButtontype(other.getButtontype());
-        }
-        if (other.hasState()) {
-          setState(other.getState());
-        }
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        if (!hasType()) {
-          
-          return false;
-        }
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        while (true) {
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      @SuppressWarnings("unused")
+	int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              
-              return this;
+              done = true;
+              break;
             default: {
-              if (!parseUnknownField(input, extensionRegistry, tag)) {
-                
-                return this;
+              if (!parseUnknownField(input,
+                                     extensionRegistry, tag)) {
+                done = true;
               }
               break;
             }
@@ -556,40 +206,472 @@ public final class Data {
               z_ = input.readFloat();
               break;
             }
-            case 40: {
+            case 45: {
               bitField0_ |= 0x00000010;
-              xx_ = input.readInt32();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000020;
-              yy_ = input.readInt32();
+              w_ = input.readFloat();
               break;
             }
             case 56: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000020;
               buttontype_ = input.readInt32();
               break;
             }
             case 64: {
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000040;
               state_ = input.readBool();
               break;
             }
           }
         }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
       }
-      
+    }
+    public static com.google.protobuf.Parser<PhoneEvent> PARSER =
+        new com.google.protobuf.AbstractParser<PhoneEvent>() {
+      public PhoneEvent parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PhoneEvent(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PhoneEvent> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required .keimote.MsgType type = 1;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private keimote.Data.MsgType type_;
+    /**
+     * <code>required .keimote.MsgType type = 1;</code>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .keimote.MsgType type = 1;</code>
+     */
+    public keimote.Data.MsgType getType() {
+      return type_;
+    }
+
+    // optional float x = 2;
+    public static final int X_FIELD_NUMBER = 2;
+    private float x_;
+    /**
+     * <code>optional float x = 2;</code>
+     */
+    public boolean hasX() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional float x = 2;</code>
+     */
+    public float getX() {
+      return x_;
+    }
+
+    // optional float y = 3;
+    public static final int Y_FIELD_NUMBER = 3;
+    private float y_;
+    /**
+     * <code>optional float y = 3;</code>
+     */
+    public boolean hasY() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional float y = 3;</code>
+     */
+    public float getY() {
+      return y_;
+    }
+
+    // optional float z = 4;
+    public static final int Z_FIELD_NUMBER = 4;
+    private float z_;
+    /**
+     * <code>optional float z = 4;</code>
+     */
+    public boolean hasZ() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional float z = 4;</code>
+     */
+    public float getZ() {
+      return z_;
+    }
+
+    // optional float w = 5;
+    public static final int W_FIELD_NUMBER = 5;
+    private float w_;
+    /**
+     * <code>optional float w = 5;</code>
+     */
+    public boolean hasW() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional float w = 5;</code>
+     */
+    public float getW() {
+      return w_;
+    }
+
+    // optional int32 buttontype = 7;
+    public static final int BUTTONTYPE_FIELD_NUMBER = 7;
+    private int buttontype_;
+    /**
+     * <code>optional int32 buttontype = 7;</code>
+     */
+    public boolean hasButtontype() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 buttontype = 7;</code>
+     */
+    public int getButtontype() {
+      return buttontype_;
+    }
+
+    // optional bool state = 8;
+    public static final int STATE_FIELD_NUMBER = 8;
+    private boolean state_;
+    /**
+     * <code>optional bool state = 8;</code>
+     */
+    public boolean hasState() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional bool state = 8;</code>
+     */
+    public boolean getState() {
+      return state_;
+    }
+
+    private void initFields() {
+      type_ = keimote.Data.MsgType.ROTATION;
+      x_ = 0F;
+      y_ = 0F;
+      z_ = 0F;
+      w_ = 0F;
+      buttontype_ = 0;
+      state_ = false;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeEnum(1, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeFloat(2, x_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeFloat(3, y_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeFloat(4, z_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeFloat(5, w_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(7, buttontype_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBool(8, state_);
+      }
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(2, x_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(3, y_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(4, z_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(5, w_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, buttontype_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(8, state_);
+      }
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static keimote.Data.PhoneEvent parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static keimote.Data.PhoneEvent parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static keimote.Data.PhoneEvent parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static keimote.Data.PhoneEvent parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static keimote.Data.PhoneEvent parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static keimote.Data.PhoneEvent parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static keimote.Data.PhoneEvent parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static keimote.Data.PhoneEvent parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static keimote.Data.PhoneEvent parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static keimote.Data.PhoneEvent parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(keimote.Data.PhoneEvent prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    /**
+     * Protobuf type {@code keimote.PhoneEvent}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageLite.Builder<
+          keimote.Data.PhoneEvent, Builder>
+        implements keimote.Data.PhoneEventOrBuilder {
+      // Construct using keimote.Data.PhoneEvent.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private void maybeForceBuilderInitialization() {
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        type_ = keimote.Data.MsgType.ROTATION;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        x_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        y_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        z_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        w_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        buttontype_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        state_ = false;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public keimote.Data.PhoneEvent getDefaultInstanceForType() {
+        return keimote.Data.PhoneEvent.getDefaultInstance();
+      }
+
+      public keimote.Data.PhoneEvent build() {
+        keimote.Data.PhoneEvent result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public keimote.Data.PhoneEvent buildPartial() {
+        keimote.Data.PhoneEvent result = new keimote.Data.PhoneEvent(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.x_ = x_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.y_ = y_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.z_ = z_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.w_ = w_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.buttontype_ = buttontype_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.state_ = state_;
+        result.bitField0_ = to_bitField0_;
+        return result;
+      }
+
+      public Builder mergeFrom(keimote.Data.PhoneEvent other) {
+        if (other == keimote.Data.PhoneEvent.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasX()) {
+          setX(other.getX());
+        }
+        if (other.hasY()) {
+          setY(other.getY());
+        }
+        if (other.hasZ()) {
+          setZ(other.getZ());
+        }
+        if (other.hasW()) {
+          setW(other.getW());
+        }
+        if (other.hasButtontype()) {
+          setButtontype(other.getButtontype());
+        }
+        if (other.hasState()) {
+          setState(other.getState());
+        }
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasType()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        keimote.Data.PhoneEvent parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (keimote.Data.PhoneEvent) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
       private int bitField0_;
-      
+
       // required .keimote.MsgType type = 1;
-      private keimote.Data.MsgType type_ = keimote.Data.MsgType.MAG;
+      private keimote.Data.MsgType type_ = keimote.Data.MsgType.ROTATION;
+      /**
+       * <code>required .keimote.MsgType type = 1;</code>
+       */
       public boolean hasType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
+      /**
+       * <code>required .keimote.MsgType type = 1;</code>
+       */
       public keimote.Data.MsgType getType() {
         return type_;
       }
+      /**
+       * <code>required .keimote.MsgType type = 1;</code>
+       */
       public Builder setType(keimote.Data.MsgType value) {
         if (value == null) {
           throw new NullPointerException();
@@ -599,174 +681,228 @@ public final class Data {
         
         return this;
       }
+      /**
+       * <code>required .keimote.MsgType type = 1;</code>
+       */
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = keimote.Data.MsgType.MAG;
+        type_ = keimote.Data.MsgType.ROTATION;
         
         return this;
       }
-      
+
       // optional float x = 2;
       private float x_ ;
+      /**
+       * <code>optional float x = 2;</code>
+       */
       public boolean hasX() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
+      /**
+       * <code>optional float x = 2;</code>
+       */
       public float getX() {
         return x_;
       }
+      /**
+       * <code>optional float x = 2;</code>
+       */
       public Builder setX(float value) {
         bitField0_ |= 0x00000002;
         x_ = value;
         
         return this;
       }
+      /**
+       * <code>optional float x = 2;</code>
+       */
       public Builder clearX() {
         bitField0_ = (bitField0_ & ~0x00000002);
         x_ = 0F;
         
         return this;
       }
-      
+
       // optional float y = 3;
       private float y_ ;
+      /**
+       * <code>optional float y = 3;</code>
+       */
       public boolean hasY() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
+      /**
+       * <code>optional float y = 3;</code>
+       */
       public float getY() {
         return y_;
       }
+      /**
+       * <code>optional float y = 3;</code>
+       */
       public Builder setY(float value) {
         bitField0_ |= 0x00000004;
         y_ = value;
         
         return this;
       }
+      /**
+       * <code>optional float y = 3;</code>
+       */
       public Builder clearY() {
         bitField0_ = (bitField0_ & ~0x00000004);
         y_ = 0F;
         
         return this;
       }
-      
+
       // optional float z = 4;
       private float z_ ;
+      /**
+       * <code>optional float z = 4;</code>
+       */
       public boolean hasZ() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
+      /**
+       * <code>optional float z = 4;</code>
+       */
       public float getZ() {
         return z_;
       }
+      /**
+       * <code>optional float z = 4;</code>
+       */
       public Builder setZ(float value) {
         bitField0_ |= 0x00000008;
         z_ = value;
         
         return this;
       }
+      /**
+       * <code>optional float z = 4;</code>
+       */
       public Builder clearZ() {
         bitField0_ = (bitField0_ & ~0x00000008);
         z_ = 0F;
         
         return this;
       }
-      
-      // optional int32 xx = 5;
-      private int xx_ ;
-      public boolean hasXx() {
+
+      // optional float w = 5;
+      private float w_ ;
+      /**
+       * <code>optional float w = 5;</code>
+       */
+      public boolean hasW() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
-      public int getXx() {
-        return xx_;
+      /**
+       * <code>optional float w = 5;</code>
+       */
+      public float getW() {
+        return w_;
       }
-      public Builder setXx(int value) {
+      /**
+       * <code>optional float w = 5;</code>
+       */
+      public Builder setW(float value) {
         bitField0_ |= 0x00000010;
-        xx_ = value;
+        w_ = value;
         
         return this;
       }
-      public Builder clearXx() {
+      /**
+       * <code>optional float w = 5;</code>
+       */
+      public Builder clearW() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        xx_ = 0;
+        w_ = 0F;
         
         return this;
       }
-      
-      // optional int32 yy = 6;
-      private int yy_ ;
-      public boolean hasYy() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      public int getYy() {
-        return yy_;
-      }
-      public Builder setYy(int value) {
-        bitField0_ |= 0x00000020;
-        yy_ = value;
-        
-        return this;
-      }
-      public Builder clearYy() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        yy_ = 0;
-        
-        return this;
-      }
-      
+
       // optional int32 buttontype = 7;
       private int buttontype_ ;
+      /**
+       * <code>optional int32 buttontype = 7;</code>
+       */
       public boolean hasButtontype() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
+      /**
+       * <code>optional int32 buttontype = 7;</code>
+       */
       public int getButtontype() {
         return buttontype_;
       }
+      /**
+       * <code>optional int32 buttontype = 7;</code>
+       */
       public Builder setButtontype(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000020;
         buttontype_ = value;
         
         return this;
       }
+      /**
+       * <code>optional int32 buttontype = 7;</code>
+       */
       public Builder clearButtontype() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000020);
         buttontype_ = 0;
         
         return this;
       }
-      
+
       // optional bool state = 8;
       private boolean state_ ;
+      /**
+       * <code>optional bool state = 8;</code>
+       */
       public boolean hasState() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
+      /**
+       * <code>optional bool state = 8;</code>
+       */
       public boolean getState() {
         return state_;
       }
+      /**
+       * <code>optional bool state = 8;</code>
+       */
       public Builder setState(boolean value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000040;
         state_ = value;
         
         return this;
       }
+      /**
+       * <code>optional bool state = 8;</code>
+       */
       public Builder clearState() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000040);
         state_ = false;
         
         return this;
       }
-      
+
       // @@protoc_insertion_point(builder_scope:keimote.PhoneEvent)
     }
-    
+
     static {
       defaultInstance = new PhoneEvent(true);
       defaultInstance.initFields();
     }
-    
+
     // @@protoc_insertion_point(class_scope:keimote.PhoneEvent)
   }
-  
-  
+
+
   static {
   }
-  
+
   // @@protoc_insertion_point(outer_class_scope)
 }
