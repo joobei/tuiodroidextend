@@ -193,6 +193,12 @@ public class MainActivity extends Activity implements SensorEventListener {
 		case R.id.help:
 			this.openHelpActivity();
 			return true;
+			
+		case R.id.clip:
+			PhoneEvent.Builder toTransmit = PhoneEvent.newBuilder();
+			toTransmit = PhoneEvent.newBuilder().setType(MsgType.BUTTON).setButtontype(4).setState(true);
+			new Transmitter().execute(toTransmit.build().toByteArray());
+			return true;
 
 		case R.id.calibrate:
 			this.calibrate();
@@ -221,7 +227,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 
 	/**
 	 * Opens the Activity that Help information
-	 */
+	 */ 
 	private void openHelpActivity (){
 		Intent myIntent = new Intent();
 		myIntent.setClassName("tuioDroid.impl", "tuioDroid.impl.HelpActivity");
@@ -336,8 +342,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 	}
 
 	private void sensorUnreg() {
-		sm.unregisterListener(this, sm
-				.getSensorList(Sensor.TYPE_ROTATION_VECTOR).get(0));
+		sm.unregisterListener(this, sm.getSensorList(Sensor.TYPE_ROTATION_VECTOR).get(0));
 		working = false;
 	}
 

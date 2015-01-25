@@ -3,5 +3,6 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
 <item android:title="Settings" android:id="@+id/settings"></item>
 <item android:title="Help" android:id="@+id/help"></item>
+<item android:title="Clipping" android:id="@+id/clip"></item>
 <item android:title="Calibrate" android:id="@+id/calibrate"></item>
 </menu>
